@@ -15,9 +15,9 @@ const myProjects = [
 
 const myBlogs = [
   {
-    title: "My First Blog Post",
+    title: "Welcome to My Engineering Journey!",
     date: "April 25, 2026",
-    summary: "I just built my brand new portfolio website to track my engineering progress!",
+    summary: "The most intimidating part of learning is starting. Here is my attempt to overcome that challenge and document my Arduino journey.",
     link: "blog-post-1.html"
   },
   {
