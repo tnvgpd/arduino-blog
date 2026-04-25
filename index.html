@@ -1,48 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Arduino Blog</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: auto;
-      padding: 40px;
-      background: #fafafa;
-      color: #222;
-    }
-    h1 { font-size: 40px; }
-    .post {
-      background: white;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .tag {
-      font-size: 12px;
-      color: gray;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Portfolio & Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Load our dynamic scripts -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </head>
-
 <body>
 
-<h1>🔧 My Arduino Blog</h1>
-<p>Welcome! I document my Arduino projects here.</p>
+  <!-- NAVBAR SECTION -->
+  <nav class="navbar">
+    <div class="nav-brand">Student Engineer</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
 
-<div class="post">
-  <h2>LED Blink Project</h2>
-  <p class="tag">Arduino • Beginner</p>
-  <p>I built my first Arduino project by blinking an LED using basic digital output pins.</p>
-</div>
+  <!-- HOME SECTION -->
+  <header id="home" class="section hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Tanvi's Engineering Journey</h1>
+      <p class="hero-subtitle" id="typewriter-text" style="min-height: 2em;">
+        <span class="type-main"></span><span class="cursor">|</span>
+      </p>
+      <a href="projects.html" class="btn">View My Work</a>
+    </div>
+  </header>
 
-<div class="post">
-  <h2>More Projects Coming Soon</h2>
-  <p class="tag">Updates</p>
-  <p>I will be adding sensors, motors, and robotics projects soon.</p>
-</div>
+  <!-- FEATURED PROJECTS SECTION -->
+  <section id="projects" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      
+      <!-- Container injected by script.js -->
+      <div id="featured-projects" class="projects-grid"></div>
+      
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="projects.html" class="btn">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED BLOG SECTION -->
+  <section id="blog" class="section">
+    <div class="container">
+      <h2 class="section-title">Latest Blog Post</h2>
+      
+      <!-- Container injected by script.js -->
+      <div id="featured-blogs" class="blog-container"></div>
+      
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="blog.html" class="btn">View All Blog Posts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Student Engineering Portfolio. Built with plain HTML, CSS, and JS.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
