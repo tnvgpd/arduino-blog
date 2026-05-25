@@ -45,11 +45,13 @@ function renderBlogs(containerId, limit = null) {
 
   let html = "";
   itemsToRender.forEach(b => {
+    let tagsHtml = b.tags ? b.tags.map(t => `<span class="tag">${t}</span>`).join('') : '';
     html += `
       <div class="post">
         <h3 class="post-title">${b.title}</h3>
         <p class="post-date">${b.date}</p>
         <p class="post-summary">${b.summary}</p>
+        ${tagsHtml ? `<div class="tags" style="margin-top:0.5rem; margin-bottom: 1rem;">${tagsHtml}</div>` : ''}
         <div class="post-expand">
           <a href="${b.link}" class="btn btn-outline" style="margin-top: 0.5rem;">Read Full Post &raquo;</a>
         </div>
@@ -113,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- 3D TILT EFFECT ON CARDS ---
+  // --- 3D TILT EFFECT ON CARDS (ANTI-TWITCH VERSION) ---
   document.querySelectorAll('.project-card, .post').forEach(card => {
     // Only apply physics on desktop/systems with a fine pointer (mouse)
     if(window.matchMedia("(pointer: fine)").matches) {
@@ -123,17 +125,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const y = e.clientY - rect.top - rect.height / 2;
         
         // Calculate physics rotation limits based on cursor trajectory
-        const rotateX = -y / 15; 
-        const rotateY = x / 15;
+        const rotateX = -y / 20; 
+        const rotateY = x / 20;
         
-        card.style.transform = `perspective(1000px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        card.style.transition = `none`; // Instantly track mouse movement
+        // We include translateY(-8px) so it doesn't fight the CSS hover effect!
+        // We also use a tiny 0.1s transition instead of 'none' to prevent micro-stuttering.
+        card.style.transform = `perspective(1000px) translateY(-8px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        card.style.transition = `transform 0.1s linear`; 
       });
       
       card.addEventListener('mouseleave', () => {
-        // Snap back to zero with a smooth cubic-bezier bounce
-        card.style.transform = `perspective(1000px) scale(1) rotateX(0) rotateY(0)`;
-        card.style.transition = `transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)`; 
+        // Clear the inline JS styles entirely so your native CSS cleanly takes over to bounce it back!
+        card.style.transform = ``;
+        card.style.transition = ``; 
       });
     }
   });
