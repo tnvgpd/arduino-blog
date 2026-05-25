@@ -34,7 +34,9 @@ function renderBlogs(containerId, limit = null) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  const itemsToRender = limit ? myBlogs.slice(0, limit) : myBlogs;
+  // Automatically sort the blogs from newest to oldest based on their written Date
+  const sortedBlogs = [...myBlogs].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const itemsToRender = limit ? sortedBlogs.slice(0, limit) : sortedBlogs;
   
   if (itemsToRender.length === 0) {
     container.innerHTML = `<p style="text-align:center; padding: 2rem; color: var(--text-muted); font-style: italic; grid-column: 1 / -1; width: 100%;">Coming soon! Stay tuned for my first blog post.</p>`;

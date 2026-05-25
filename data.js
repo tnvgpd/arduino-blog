@@ -21,9 +21,9 @@ const myBlogs = [
     link: "blog-post-1.html"
   },
   {
-    title: "My Second Blog Post",
-    date: "April 26, 2026",
-    summary: "This is a placeholder for the post I will write tomorrow!",
+    title: "My First Project: Sensor-Based Nightlight",
+    date: "May 24, 2026",
+    summary: "To test out some fundamental Arduino skills, I completed my first project using a Grove Light Sensor.",
     link: "blog-post-2.html"
   }
 ];
